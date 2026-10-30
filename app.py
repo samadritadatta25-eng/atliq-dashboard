@@ -172,21 +172,18 @@ st.caption(f"{city} · May to July 2022 · Samadrita Datta and Anika Sharma · "
 lost_cr = data["revenue_lost"].sum() / 10_000_000
 weekday_occ = occupancy_rate(occ[occ["day_type"] == "weekday"])
 weekend_occ = occupancy_rate(occ[occ["day_type"] == "weekend"])
-
-   k1, k2, k3, k4 = st.columns(4)
-   k1.metric("Bookings", f"{len(data):,}")
-   k2.metric("Revenue lost", f"₹{lost_cr:.2f} cr")
-   k3.metric("Cancelled", f"{data['is_cancelled'].mean() * 100:.1f}%")
-   k4.metric("No-shows", f"{data['is_no_show'].mean() * 100:.1f}%")
-   k5, k6, k7, k8 = st.columns(4)
-   k5.metric("Weekday occupancy", f"{weekday_occ:.0f}%")
-   k6.metric("Weekend occupancy", f"{weekend_occ:.0f}%")
-   k7.metric("Weekend vs weekday gap", f"{weekend_occ - weekday_occ:.0f} pts")
-   k8.metric("Average rating", f"{data['ratings_given'].mean():.2f} / 5")
-
+k1, k2, k3, k4 = st.columns(4)
+k1.metric("Bookings", f"{len(data):,}")
+k2.metric("Revenue lost", f"₹{lost_cr:.2f} cr")
+k3.metric("Cancelled", f"{data['is_cancelled'].mean() * 100:.1f}%")
+k4.metric("No-shows", f"{data['is_no_show'].mean() * 100:.1f}%")
+k5, k6, k7, k8 = st.columns(4)
+k5.metric("Weekday occupancy", f"{weekday_occ:.0f}%")
+k6.metric("Weekend occupancy", f"{weekend_occ:.0f}%")
+k7.metric("Weekend vs weekday gap", f"{weekend_occ - weekday_occ:.0f} pts")
+k8.metric("Average rating", f"{data['ratings_given'].mean():.2f} / 5")
 tab1, tab2, tab3, tab4 = st.tabs(["Cancellations", "Empty weekday rooms",
                                   "Hotel ratings", "Policy simulator"])
-
 # ------------------------------------------------------------------
 # Tab 1: cancellations
 # ------------------------------------------------------------------
